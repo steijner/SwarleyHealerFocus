@@ -1,5 +1,5 @@
 ## Interface: 90105
 ## Title: SwarleyHealerFocus
 ## Author: Swarley
-## Version: 1.0
+## Version: 1.1
 SwarleyHealerFocus.lua

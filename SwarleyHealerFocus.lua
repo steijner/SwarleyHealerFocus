@@ -1,5 +1,4 @@
 --Addon "Swarley Healer Focus" created by Swarley (Swarley-Twisting Nether)
---Based on the code from "Arena Focus Swap" created by Humerx (Humerx-Stormscale)
 
 local f = CreateFrame("Frame")
 
@@ -27,15 +26,27 @@ f:SetScript("OnEvent",function(self, event, ...)
 		end
 	end
 
-	--Setup clickable frame we will use to set focus
-	text = "/focus arena".. healernumber
+	macrosChanged = 0;
 
-	----------------------------------------------------------------
-	if AHF == nil then
-		AHF = CreateFrame("Button","focushealer", UIParent,"SecureActionButtonTemplate")
-		AHF:SetAttribute("type", "macro")
+	--Loop all macros
+	for i=1,150 do 
+		body = GetMacroBody(i)
+		if body ~= nil then
+			-- Only edit macros that has /click focushealer inside
+			if string.find(body, "/click focushealer") then
+				-- If anything with arena is inside, replace the first char after arena to current healernumber
+				if string.find(body, "arena") then
+					idx = string.find(body, "arena")
+					-- Replace first char after arena in macro body
+					body = body:sub(1, idx+4) .. healernumber .. body:sub(idx+6)
+					EditMacro(i,nil,nil,body,nil)
+
+					macrosChanged = macrosChanged + 1;
+				end
+			end
+		end
 	end
-	
-	AHF:SetAttribute("macrotext", text)
-
+	if macrosChanged > 0 then
+		print("Updated \124cffFF0000" .. macrosChanged .. "\124r macros to: \124cFF00FF00arena" .. healernumber .. "\124r")
+	end
 end)
