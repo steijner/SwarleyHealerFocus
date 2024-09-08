@@ -1,0 +1,6 @@
+# SwarleyHealerFocus
+
+## [1.1](https://github.com/steijner/SwarleyHealerFocus/tree/1.1) (2024-09-08)
+[Full Changelog](https://github.com/steijner/SwarleyHealerFocus/compare/1.0...1.1) [Previous Releases](https://github.com/steijner/SwarleyHealerFocus/releases)
+
+- Update for The War Within, complete rework with the addon now changing macro text instead of creating a button that we click
